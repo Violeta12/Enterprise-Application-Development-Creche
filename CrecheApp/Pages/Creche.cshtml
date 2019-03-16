@@ -1,0 +1,178 @@
+﻿@page
+@model CrecheApp.Pages.CrecheModel
+@{
+    ViewData["Title"] = "Creche";
+}
+@addTagHelper*,Microsoft.AspNetCore.MvcTagHelpers
+
+<h2>Creche Application Form</h2>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Creche</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+    <h4>About the child:</h4>
+    <form method="post">
+
+        <div asp-validation-summary="All"></div>
+
+        <span asp-validation-for="Creche.ChildFirstName"></span>
+
+
+        <div>
+
+            <label asp-for=Creche.ChildFirstName></label>
+            <input asp-for=Creche.ChildFirstName>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.ChildSurname></label>
+            <input asp-for=Creche.ChildSurname>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.Ppsn></label>
+            <input asp-for=Creche.Ppsn>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.DOB></label>
+            <input type="date" asp-for=Creche.DOB>
+
+        </div>
+
+        <div class=" list-group">
+
+            <label asp-for=Creche.Gender></label>
+            <label>
+                <input asp-for="Radio1" type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Female
+            </label>
+            <label>
+                <input asp-for="Radio2" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Male
+            </label>
+        </div>
+
+
+        <h4>About the parent/guardian:</h4>
+
+
+        <div>
+
+            <label asp-for=Creche.ParentFirstName></label>
+            <input asp-for=Creche.ParentFirstName>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.ParentSurname></label>
+            <input asp-for=Creche.ParentSurname>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.Relation></label>
+            <input asp-for=Creche.Relation>
+
+        </div>
+
+
+        <div>
+
+            <label asp-for=Creche.Address></label>
+            <input asp-for=Creche.Address>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.IrishMob></label>
+            <input asp-for=Creche.IrishMob>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.SecContNumb></label>
+            <input asp-for=Creche.SecContNumb>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.OtherContNumb></label>
+            <input asp-for=Creche.OtherContNumb>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.Email></label>
+            <input asp-for=Creche.Email>
+
+        </div>
+
+        <div>
+
+            <label asp-for=Creche.SecEmail></label>
+            <input asp-for=Creche.SecEmail>
+
+        </div>
+
+        <h4>Hours Requested:</h4>
+        <div class="radio active">
+            <label>
+                <input asp-for="Radio3" type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Full Time
+            </label>
+        </div>
+
+        <div class="radio active">
+            <label>
+                <input asp-for="Radio4" type="radio" name="optionsRadios" id="optionsRadios4" value="option4">Part Time
+            </label>
+        </div>
+
+        <h4>Days Requested:</h4>
+
+        <div>
+            <select asp-for=Day asp-items=Model.DaySelectList></select>
+        </div>
+       
+
+        <h4>Starting Date Requested:</h4>
+
+
+        <div>
+
+            <label asp-for=Creche.Date></label>
+            <input type="date" asp-for=Creche.Date>
+
+        </div>
+
+         <button type="submit">Submit</button>
+    </form>
+
+    
+</body>
+</html>

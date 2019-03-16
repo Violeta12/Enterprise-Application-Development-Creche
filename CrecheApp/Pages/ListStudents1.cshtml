@@ -1,0 +1,31 @@
+﻿@page
+@model CrecheApp.Pages.ListStudents1Model
+@{
+    ViewData["Title"] = "ListStudents1";
+}
+
+<h2>ListStudents1</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var child in Model.Creche)
+            {
+                // list out each of the properties.
+                <tr>
+                    <td>@child.ChildFirstName</td>
+                    <td>@child.ChildSurname</td>
+                    <td>@child.Ppsn</td>
+
+
+                    <td> <a asp-page="StudentDetails" asp-route-id="@child.Ppsn">Details</a> </td>
+                </tr>
+            }
+    </tbody>
+</table>

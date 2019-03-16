@@ -1,0 +1,21 @@
+﻿@page
+@model CrecheApp.Pages.StudentDetailsModel
+@{
+    ViewData["Title"] = "StudentDetails";
+}
+
+<h2>StudentDetails</h2>
+
+<table>
+    <tr>
+        <td>@Model.Creche.Ppsn</td>
+        <td>@Model.Creche.ChildFirstName</td>
+        <td>@Model.Creche.ChildSurname</td>
+    </tr>
+</table>
+
+
+<form method="post">
+    <input type="hidden" asp-for=Creche.Ppsn>
+    <button type="submit">Delete</button>
+</form>
