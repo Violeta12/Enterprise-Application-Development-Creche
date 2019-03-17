@@ -95,27 +95,26 @@ namespace CrecheApp.Pages
         //public string Ppsn { get; set; }
 
         
+        //public IActionResult OnPost()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Note: This only works because all of the fields are required
+        //        // so all of the string are non null.
+        //        // Otherwise we would need to check for non null.
 
-        public IActionResult OnPost()
-        {
-            if (ModelState.IsValid)
-            {
-                // Note: This only works because all of the fields are required
-                // so all of the string are non null.
-                // Otherwise we would need to check for non null.
-
-                HttpContext.Session.SetString("ChildFirstName", Creche.ChildFirstName);
-                HttpContext.Session.SetString("ChildSurname", Creche.ChildSurname);
-                HttpContext.Session.SetString("Ppsn", Creche.Ppsn);
+        //        HttpContext.Session.SetString("ChildFirstName", Creche.ChildFirstName);
+        //        HttpContext.Session.SetString("ChildSurname", Creche.ChildSurname);
+        //        HttpContext.Session.SetString("Ppsn", Creche.Ppsn);
 
 
-                return RedirectToPage("ListStudents1");
+        //        return RedirectToPage("ListStudents1");
 
-            }
-            else
-            {
-                return Page();
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        return Page();
+        //    }
+        //}
     }
 }

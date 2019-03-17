@@ -24,7 +24,7 @@ namespace CrecheApp.Models
         [RegularExpression(@"[\w\'\-\,\s]{2,}")]
         public string ChildFirstName { get; set; } = "";
 
-       
+
         [TempData]
         [Required(ErrorMessage = "Please enter child's surname")]
         [Display(Name = "Surname")]
@@ -41,16 +41,17 @@ namespace CrecheApp.Models
         [Required]
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
-        [Range(typeof(DateTime), "16/3/2014", "16/3/2016",
-        ErrorMessage = "Value for {0} must be between {1} and {2}")]
+        [DOBAttribute]
+        //[Range(typeof(DateTime), "16/3/2014", "16/3/2016",
+        //ErrorMessage = "Value for {0} must be between {1} and {2}")]
         public DateTime DOB { get; set; }
-        
+
         [TempData]
-        [Required(ErrorMessage ="Please select child's gender")]
+        [Required(ErrorMessage = "Please select child's gender")]
         [Display(Name = "Gender     ")]
         public string Gender { get; set; }
 
-       
+
         [TempData]
         [Required(ErrorMessage = "Please enter parent's first name")]
         [Display(Name = "First Name")]
@@ -106,7 +107,7 @@ namespace CrecheApp.Models
         [TempData]
         [Required(ErrorMessage = "Please select the day")]
         [DaysClass]
-        public string[] DaySelectedList { get; set; } 
+        public string[] DaySelectedList { get; set; }
 
         [TempData]
         [Required(ErrorMessage = "Please select requested hours")]
@@ -120,8 +121,7 @@ namespace CrecheApp.Models
         [DayAttribute]
         public DateTime Date { get; set; }
 
-
-
+       
 
     }
 
