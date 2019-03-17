@@ -20,23 +20,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link href="~/css/site.css" rel="stylesheet" type="text/css" />
-
-
+    
 </head>
 <body>
 
-    <h4>About the child:</h4>
+  
     <form method="post">
 
         <div asp-validation-summary="All"></div>
 
-        <span asp-validation-for="Creche.ChildFirstName"></span>
+        <h4>About the child:</h4>
+
+
 
 
         <div>
 
             <label asp-for=Creche.ChildFirstName></label>
             <input asp-for=Creche.ChildFirstName>
+            <span asp-validation-for="Creche.ChildFirstName"></span>
 
         </div>
 
@@ -44,6 +46,7 @@
 
             <label asp-for=Creche.ChildSurname></label>
             <input asp-for=Creche.ChildSurname>
+            <span asp-validation-for="Creche.ChildSurname"></span>
 
         </div>
 
@@ -51,6 +54,7 @@
 
             <label asp-for=Creche.Ppsn></label>
             <input asp-for=Creche.Ppsn>
+            <span asp-validation-for="Creche.Ppsn"></span>
 
         </div>
 
@@ -58,19 +62,21 @@
 
             <label asp-for=Creche.DOB></label>
             <input type="date" asp-for=Creche.DOB>
+            <span asp-validation-for="Creche.DOB"></span>
 
         </div>
 
-        <div class=" list-group">
+        <div class="container">
 
             <label asp-for=Creche.Gender></label>
             <label>
-                <input asp-for="Radio1" type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Female
+                <input asp-for="Creche.Gender" type="radio" name="optionsRadios" id="optionsRadios1" value="option1">Female
             </label>
             <label>
-                <input asp-for="Radio2" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Male
+                <input asp-for="Creche.Gender" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Male
             </label>
-        </div>
+                <span asp-validation-for="Creche.Gender"></span>
+        </div>  
 
 
         <h4>About the parent/guardian:</h4>
@@ -80,6 +86,7 @@
 
             <label asp-for=Creche.ParentFirstName></label>
             <input asp-for=Creche.ParentFirstName>
+            <span asp-validation-for="Creche.ParentFirstName"></span>
 
         </div>
 
@@ -87,6 +94,7 @@
 
             <label asp-for=Creche.ParentSurname></label>
             <input asp-for=Creche.ParentSurname>
+            <span asp-validation-for="Creche.ParentSurname"></span>
 
         </div>
 
@@ -94,6 +102,7 @@
 
             <label asp-for=Creche.Relation></label>
             <input asp-for=Creche.Relation>
+            <span asp-validation-for="Creche.Relation"></span>
 
         </div>
 
@@ -102,6 +111,7 @@
 
             <label asp-for=Creche.Address></label>
             <input asp-for=Creche.Address>
+            <span asp-validation-for="Creche.Address"></span>
 
         </div>
 
@@ -109,6 +119,7 @@
 
             <label asp-for=Creche.IrishMob></label>
             <input asp-for=Creche.IrishMob>
+            <span asp-validation-for="Creche.IrishMob"></span>
 
         </div>
 
@@ -116,6 +127,7 @@
 
             <label asp-for=Creche.SecContNumb></label>
             <input asp-for=Creche.SecContNumb>
+            <span asp-validation-for="Creche.SecContNumb"></span>
 
         </div>
 
@@ -123,6 +135,7 @@
 
             <label asp-for=Creche.OtherContNumb></label>
             <input asp-for=Creche.OtherContNumb>
+            <span asp-validation-for="Creche.OtherContNumb"></span>
 
         </div>
 
@@ -130,6 +143,7 @@
 
             <label asp-for=Creche.Email></label>
             <input asp-for=Creche.Email>
+            <span asp-validation-for="Creche.Email"></span>
 
         </div>
 
@@ -138,27 +152,29 @@
             <label asp-for=Creche.SecEmail></label>
             <input asp-for=Creche.SecEmail>
 
+
         </div>
 
         <h4>Hours Requested:</h4>
-        <div class="radio active">
-            <label>
-                <input asp-for="Radio3" type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Full Time
-            </label>
-        </div>
+        <div class="container">
+            <label asp-for=Creche.Mode></label>
 
-        <div class="radio active">
             <label>
-                <input asp-for="Radio4" type="radio" name="optionsRadios" id="optionsRadios4" value="option4">Part Time
+                <input asp-for="Creche.Mode" type="radio" name="optionsRadioBut" id="optionsRadioBut1" value="optionBut1">Full Time
             </label>
+            <label>
+                <input asp-for="Creche.Mode" type="radio" name="optionsRadioBut" id="optionsRadioBut2" value="optionBut2">Part Time
+            </label>
+                <span asp-validation-for="Creche.Mode"></span>
         </div>
 
         <h4>Days Requested:</h4>
 
         <div>
             <select asp-for=Day asp-items=Model.DaySelectList></select>
+            <span asp-validation-for="Creche.Day"></span>
         </div>
-       
+
 
         <h4>Starting Date Requested:</h4>
 
@@ -167,10 +183,11 @@
 
             <label asp-for=Creche.Date></label>
             <input type="date" asp-for=Creche.Date>
+            <span asp-validation-for="Creche.Date"></span>
 
         </div>
 
-         <button type="submit">Submit</button>
+        <button type="submit">Submit</button>
     </form>
 
     

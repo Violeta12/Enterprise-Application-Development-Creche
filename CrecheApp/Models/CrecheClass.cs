@@ -15,93 +15,118 @@ namespace CrecheApp.Models
     {
         //properties
 
+        [TempData]
         [Required(ErrorMessage = "Please enter child's first name")]
         [Display(Name = "First Name")]
         [RegularExpression(@"\w{2,50}")]
         public string ChildFirstName { get; set; } = "";
 
+        [TempData]
         [Required(ErrorMessage = "Please enter child's surname")]
         [Display(Name = "Surname")]
         [RegularExpression(@"\w{2,50}")]
         public string ChildSurname { get; set; } = "";
-        
+
+        [TempData]
         [Required(ErrorMessage = "Please enter valid child's PPSN")]
         [Display(Name = "PPSN")]
-        [RegularExpression(@"(s|S)\d{7}")]
+        [RegularExpression(@"\d{7}(\w)(a|A)")]
         public string Ppsn { get; set; } = "";
 
+        [TempData]
         [Required]
         [Display(Name = "Date of Birth")]
-        [RegularExpression(@"(s|S)\d{7}")]
+        [Range(typeof(DateTime), "16/3/2014", "16/3/2016",
+        ErrorMessage = "Value for {0} must be between {1} and {2}")]
         public DateTime DOB { get; set; }
-
-        [Required]
+        
+        [TempData]
+        [Required(ErrorMessage ="Please select child's gender")]
         [Display(Name = "Gender     ")]
         public string Gender { get; set; }
 
-
-        [Required(ErrorMessage = "Please enter child's first name")]
+       
+        [TempData]
+        [Required(ErrorMessage = "Please enter parent's first name")]
         [Display(Name = "First Name")]
         [RegularExpression(@"\w{2,50}")]
         public string ParentFirstName { get; set; } = "";
 
-        [Required(ErrorMessage = "Please enter child's surname")]
+        [TempData]
+        [Required(ErrorMessage = "Please enter parent's surname")]
         [Display(Name = "Surname")]
         [RegularExpression(@"\w{2,50}")]
         public string ParentSurname { get; set; } = "";
 
-        [Required]
+        [TempData]
+        [Required(ErrorMessage = "Please enter relationship to child")]
         [Display(Name = "Relationship to Child")]
         [RegularExpression(@"\w{2,50}")]
         public string Relation { get; set; } = "";
 
-        [Required]
+        [TempData]
+        [Required(ErrorMessage = "Please enter address")]
         [Display(Name = "Address")]
         [RegularExpression(@"\w{2,50}")]
         public string Address { get; set; } = "";
 
-        [Required]
+        [TempData]
+        [Required(ErrorMessage = "Please enter mobile phone number")]
         [Display(Name = "Irish Mobile Phone Number")]
-        [RegularExpression(@"\d{2,50}")]
+        [RegularExpression(@"(08|003538|\+3538)\d{8,9}")]
         public int IrishMob { get; set; }
 
-
+        [TempData]
         [Display(Name = "Second Contact Number")]
-        [RegularExpression(@"\d{2,50}")]
+        [RegularExpression(@"(0|00353|\+353)\d{6,12}")]
         public int SecContNumb { get; set; }
 
-        [Required]
+        [TempData]
+        [Required(ErrorMessage = "Please enter other contact number")]
         [Display(Name = "Other Contact Number")]
-        [RegularExpression(@"\d{2,50}")]
+        [RegularExpression(@"(0|00353|\+353)\d{6,12}")]
         public int OtherContNumb { get; set; }
 
-        [Required]
+        [TempData]
+        [Required(ErrorMessage = "Please enter e-mail address")]
         [Display(Name = "e-mail address")]
-        [RegularExpression(@"\w{2,50}")]
+        [RegularExpression(@"([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)")]
         public string Email { get; set; } = "";
 
-     
+        [TempData]
         [Display(Name = "second e-mail address")]
-        [RegularExpression(@"\w{2,50}")]
+        [RegularExpression(@"([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)")]
         public string SecEmail { get; set; } = "";
 
-        [Required]
+        [TempData]
+        [Required(ErrorMessage = "Please select the day")]
         public string[] Day { get; set; }
 
+        [TempData]
+        [Required(ErrorMessage = "Please select requested hours")]
+        [Display(Name = " ")]
+        public string[] Mode { get; set; }
 
-        [Required (ErrorMessage = "Please enter the future date")]
+        [TempData]
+        [Required(ErrorMessage = "Please enter the future date")]
         [Display(Name = "Date")]
-        [RegularExpression(@"\w{2,50}")]
-        public DateTime Date { get; set; } 
-        
-        //if (Date<DateTime.Now)
-        //    {
-        //      return "Wrong date";            
-        //    }
-        //else {
-        //       return "";
-        //     }
+        public DateTime Date { get; set; }
 
-          
+
+
+
     }
+
+    //public void OnPost()
+    //{
+    //    if (Creche.Date< DateTime.Now())
+    //    {
+    //        Message = "Please enter the future date";
+    //    }
+    //    else
+    //    {
+    //        Message = "";
+    //    }
+
+    //}
 }

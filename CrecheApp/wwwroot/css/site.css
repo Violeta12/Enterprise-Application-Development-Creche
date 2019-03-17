@@ -4,6 +4,31 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
+.field-validation-error {
+    color: red;
+    font-size: 80%;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.validation-summary-errors {
+    border: solid red;
+    font-weight: bold;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
