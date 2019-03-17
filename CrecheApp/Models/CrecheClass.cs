@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using CrecheApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+
+
 
 namespace CrecheApp.Models
 {
@@ -18,13 +21,14 @@ namespace CrecheApp.Models
         [TempData]
         [Required(ErrorMessage = "Please enter child's first name")]
         [Display(Name = "First Name")]
-        [RegularExpression(@"\w{2,50}")]
+        [RegularExpression(@"[\w\'\-\,\s]{2,}")]
         public string ChildFirstName { get; set; } = "";
 
+       
         [TempData]
         [Required(ErrorMessage = "Please enter child's surname")]
         [Display(Name = "Surname")]
-        [RegularExpression(@"\w{2,50}")]
+        [RegularExpression(@"[\w\'\-\,\s]{2,}")]
         public string ChildSurname { get; set; } = "";
 
         [TempData]
@@ -36,6 +40,7 @@ namespace CrecheApp.Models
         [TempData]
         [Required]
         [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
         [Range(typeof(DateTime), "16/3/2014", "16/3/2016",
         ErrorMessage = "Value for {0} must be between {1} and {2}")]
         public DateTime DOB { get; set; }
@@ -49,25 +54,25 @@ namespace CrecheApp.Models
         [TempData]
         [Required(ErrorMessage = "Please enter parent's first name")]
         [Display(Name = "First Name")]
-        [RegularExpression(@"\w{2,50}")]
+        [RegularExpression(@"[\w\'\-\,\s]{2,}")]
         public string ParentFirstName { get; set; } = "";
 
         [TempData]
         [Required(ErrorMessage = "Please enter parent's surname")]
         [Display(Name = "Surname")]
-        [RegularExpression(@"\w{2,50}")]
+        [RegularExpression(@"[\w\'\-\,\s]{2,}")]
         public string ParentSurname { get; set; } = "";
 
         [TempData]
         [Required(ErrorMessage = "Please enter relationship to child")]
-        [Display(Name = "Relationship to Child")]
-        [RegularExpression(@"\w{2,50}")]
+        [Display(Name = "Relationship to Child: Mother/Father/Other")]
+        [RegularExpression(@"[|mother|Mother|MOTHER|father|FATHER|Father|other|Other|OTHER]")]
         public string Relation { get; set; } = "";
 
         [TempData]
         [Required(ErrorMessage = "Please enter address")]
         [Display(Name = "Address")]
-        [RegularExpression(@"\w{2,50}")]
+        [RegularExpression(@"[\w\'\-\,\s\d]{2,}")]
         public string Address { get; set; } = "";
 
         [TempData]
@@ -100,7 +105,8 @@ namespace CrecheApp.Models
 
         [TempData]
         [Required(ErrorMessage = "Please select the day")]
-        public string[] Day { get; set; }
+        [DaysClass]
+        public string[] DaySelectedList { get; set; } 
 
         [TempData]
         [Required(ErrorMessage = "Please select requested hours")]
@@ -110,6 +116,8 @@ namespace CrecheApp.Models
         [TempData]
         [Required(ErrorMessage = "Please enter the future date")]
         [Display(Name = "Date")]
+        [DataType(DataType.Date)]
+        [DayAttribute]
         public DateTime Date { get; set; }
 
 
@@ -119,7 +127,7 @@ namespace CrecheApp.Models
 
     //public void OnPost()
     //{
-    //    if (Creche.Date< DateTime.Now())
+    //    if (Creche.Date < DateTime.Now())
     //    {
     //        Message = "Please enter the future date";
     //    }

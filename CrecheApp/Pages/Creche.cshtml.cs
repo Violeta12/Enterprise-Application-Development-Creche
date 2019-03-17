@@ -7,13 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Http;
+
 
 
 namespace CrecheApp.Pages
 {
     public class CrecheModel : PageModel
     {
-
+        
         private readonly CrecheContext _db;
 
         public CrecheModel(CrecheContext db)
@@ -25,27 +28,28 @@ namespace CrecheApp.Pages
         //[TempData]
         public CrecheClass Creche { get; set; }
 
-        [BindProperty]
-        //[TempData]
-        public string Radio1 { get; set; }
+        //[BindProperty]
+        ////[TempData]
+        //public string Radio1 { get; set; }
 
-        [BindProperty]
-        //[TempData]
-        public string Radio2 { get; set; }
+        //[BindProperty]
+        ////[TempData]
+        //public string Radio2 { get; set; }
 
 
-        [BindProperty]
-        //[TempData]
-        public string Radio3 { get; set; }
+        //[BindProperty]
+        ////[TempData]
+        //public string Radio3 { get; set; }
 
-        [BindProperty]
-        //[TempData]
-        public string Radio4 { get; set; }
+        //[BindProperty]
+        ////[TempData]
+        //public string Radio4 { get; set; }
 
         [BindProperty]
         //[TempData]
         public string[] Day { get; set; }
 
+        [BindProperty]
         public List<SelectListItem> DaySelectList { get; set; } =
            new List<SelectListItem>
            { new SelectListItem ("Monday","Monday"),
@@ -69,11 +73,40 @@ namespace CrecheApp.Pages
                 return Page();
             }
         }
+        //[Range(typeof(DateTime), "16/3/2014", "16/3/2016",
+        //ErrorMessage = "Value for {0} must be between {1} and {2}")]
 
-
+       
         public void OnGet()
         {
 
+            Creche.ChildFirstName = HttpContext.Session.GetString("ChildFirstName");
+            Creche.ChildSurname = HttpContext.Session.GetString("ChildSurname");
+            Creche.Ppsn = HttpContext.Session.GetString("Ppsn");
+
+
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                // Note: This only works because all of the fields are required
+                // so all of the string are non null.
+                // Otherwise we would need to check for non null.
+
+                HttpContext.Session.SetString("ChildFirstName", Creche.ChildFirstName);
+                HttpContext.Session.SetString("ChildSurname", Creche.ChildSurname);
+                HttpContext.Session.SetString("Ppsn", Creche.Ppsn);
+
+
+                return RedirectToPage("ListStudents1");
+
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }

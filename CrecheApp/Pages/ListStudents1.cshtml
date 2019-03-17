@@ -4,7 +4,11 @@
     ViewData["Title"] = "ListStudents1";
 }
 
-<h2>ListStudents1</h2>
+<h1> This is the confirm page</h1>
+
+<h2>The following values were entered</h2>
+
+@*<h2>ListStudents1</h2>*@
 <table class="table">
     <thead>
         <tr>
@@ -16,16 +20,16 @@
     </thead>
     <tbody>
         @foreach (var child in Model.Creche)
-            {
-                // list out each of the properties.
-                <tr>
-                    <td>@child.ChildFirstName</td>
-                    <td>@child.ChildSurname</td>
-                    <td>@child.Ppsn</td>
+        {
+            // list out each of the properties.
+            <tr>
+                <td>@child.ChildFirstName</td>
+                <td>@child.ChildSurname</td>
+                <td>@child.Ppsn</td>
 
 
-                    <td> <a asp-page="StudentDetails" asp-route-id="@child.Ppsn">Details</a> </td>
-                </tr>
-            }
+                <td> <a asp-page="StudentDetails" asp-route-id="@child.Ppsn">Details</a> </td>
+            </tr>
+        }
     </tbody>
 </table>

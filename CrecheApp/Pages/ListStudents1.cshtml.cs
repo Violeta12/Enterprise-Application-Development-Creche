@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using CrecheApp.Models;
+using Microsoft.AspNetCore.Http;
 
 
 namespace CrecheApp.Pages
@@ -25,9 +26,23 @@ namespace CrecheApp.Pages
         {
             Creche = await _db.Creche.AsNoTracking().ToListAsync();
         }
+       
+        public string ChildFirstName { get; set; }
+
+        public string ChildSurname { get; set; }
+
+        public string Ppsn { get; set; }
+
         public void OnGet()
         {
+            // this is O.K. because if there is nothing in the Session
+            // the values will just be null when they are retrieved.
+
+            ChildFirstName = HttpContext.Session.GetString("ChildFirstName");
+            ChildSurname = HttpContext.Session.GetString("ChildSurname");
+            Ppsn = HttpContext.Session.GetString("Ppsn");
 
         }
+
     }
 }
