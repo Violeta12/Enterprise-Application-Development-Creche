@@ -16,7 +16,19 @@ namespace CrecheApp.Pages
 {
     public class CrecheModel : PageModel
     {
-        
+        [BindProperty]
+        public CrecheClass Creche { get; set; }
+
+        //public void OnGet()
+        //{
+
+        //    Creche.ChildFirstName = HttpContext.Session.GetString("ChildFirstName");
+        //    Creche.ChildSurname = HttpContext.Session.GetString("ChildSurname");
+        //    Creche.Ppsn = HttpContext.Session.GetString("Ppsn");
+
+
+        //}
+
         private readonly CrecheContext _db;
 
         public CrecheModel(CrecheContext db)
@@ -24,9 +36,9 @@ namespace CrecheApp.Pages
             _db = db;
         }
 
-        [BindProperty]
+        //[BindProperty]
         //[TempData]
-        public CrecheClass Creche { get; set; }
+        //public CrecheClass Creche { get; set; }
 
         //[BindProperty]
         ////[TempData]
@@ -76,16 +88,13 @@ namespace CrecheApp.Pages
         //[Range(typeof(DateTime), "16/3/2014", "16/3/2016",
         //ErrorMessage = "Value for {0} must be between {1} and {2}")]
 
-       
-        public void OnGet()
-        {
+        //public string ChildFirstName { get; set; }
 
-            Creche.ChildFirstName = HttpContext.Session.GetString("ChildFirstName");
-            Creche.ChildSurname = HttpContext.Session.GetString("ChildSurname");
-            Creche.Ppsn = HttpContext.Session.GetString("Ppsn");
+        //public string ChildSurname { get; set; }
 
+        //public string Ppsn { get; set; }
 
-        }
+        
 
         public IActionResult OnPost()
         {

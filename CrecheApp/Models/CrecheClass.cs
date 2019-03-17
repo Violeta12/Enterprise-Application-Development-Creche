@@ -64,9 +64,9 @@ namespace CrecheApp.Models
         public string ParentSurname { get; set; } = "";
 
         [TempData]
-        [Required(ErrorMessage = "Please enter relationship to child")]
+        [Required(ErrorMessage = "Please enter relationship to child: mother, father or other")]
         [Display(Name = "Relationship to Child: Mother/Father/Other")]
-        [RegularExpression(@"[|mother|Mother|MOTHER|father|FATHER|Father|other|Other|OTHER]")]
+        [RegularExpression(@"(mother|Mother|MOTHER|father|FATHER|Father|other|Other|OTHER)")]
         public string Relation { get; set; } = "";
 
         [TempData]
